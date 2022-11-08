@@ -45,7 +45,7 @@ private static final char unknownMarker = '?'; // transforms to nothing
         return  this.ySize; 
     }
 
-    public void fillBoard(char filler)
+    private void fillBoard(char filler)
     {
         for (int i = 0; i < this.xSize; i++ )
         {
@@ -74,7 +74,7 @@ private static final char unknownMarker = '?'; // transforms to nothing
          return result; 
         }
 
-    public void writeEntry(Coordinate cord, char entry)
+    private void writeEntry(Coordinate cord, char entry)
     {
         try 
         {
@@ -86,7 +86,7 @@ private static final char unknownMarker = '?'; // transforms to nothing
         }
     }
 
-    public char getEntry(Coordinate cord)
+    private char getEntry(Coordinate cord)
     {
         try 
         {
@@ -136,6 +136,21 @@ private static final char unknownMarker = '?'; // transforms to nothing
 
 
         return returnBoard; 
+    }
+
+    public boolean isActiveShipAtPosition(Coordinate coord) {
+        if (indexChecker(coord)) {
+            throw(new Error("Given Coord is not matching valid coord ranges"));
+        }
+        char value = this.board[coord.x] [coord.y];
+        switch (value) {
+            case Board.activeShipMarker:
+                return true;
+            case Board.emptyFieldMarker:
+                return false;
+            default:
+                throw(new Error("isActiveShipAtPosition received unknown marker, maybe called from wrong phase of the game"));
+        }
     }
 
 }

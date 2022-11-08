@@ -44,6 +44,10 @@ public class Player
     }
     public Coordinate placingShipTurn(int numberOfTargets) {
         Coordinate coord = this.input.getShipCoordinate(this.playerID, this.name, numberOfTargets);
+        if (this.board.isActiveShipAtPosition(coord)) {
+            this.output.showMessage("The given coordinate is already occupied, please enter another one");
+            this.placingShipTurn(numberOfTargets);
+        }
         return coord; 
     }
     
