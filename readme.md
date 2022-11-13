@@ -7,4 +7,4 @@ The Game is Battleship, each player positions their fleet, then they proceed to 
     - `javac /build *.java`
 
 - To run, run the Battleship.java file with the command:
-    -`java /build/Battleship.class`
+    - `java /build/Battleship.class`
