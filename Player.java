@@ -42,12 +42,15 @@ public class Player
         Coordinate coord = this.input.getTargetCoordinate(this.playerID, this.name);
         return coord; 
     }
+
+    
     public Coordinate placingShipTurn(int numberOfTargets) {
         Coordinate coord = this.input.getShipCoordinate(this.playerID, this.name, numberOfTargets);
         if (this.board.isShipAlreadyPlacedAtPosition(coord)) {
             this.output.showMessage("The given coordinate is already occupied, please enter another one");
             this.placingShipTurn(numberOfTargets);
         }
+        this.board.PlaceShip(coord);
         return coord; 
     }
     
