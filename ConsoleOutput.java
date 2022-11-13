@@ -12,7 +12,7 @@ public class ConsoleOutput implements IOutput {
         System.out.println(Array.getLength(grid));
 
         System.out.print("* -"); 
-        for (int k = 0; k <= xSize; k++ )
+        for (int k = 0; k < xSize; k++ )
         {
             System.out.print(k + "-"); 
         }
