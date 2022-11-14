@@ -8,14 +8,17 @@ public class Player
     private String playerID; 
     
 
-    public Player(IOutput output, IPlayerInput input, String playerID)
+    public Player(IOutput output, IPlayerInput input, String playerID, String playerName)
     {
         this.output = output; 
         this.input = input; 
         this.debug = BattleShip.debug; 
         this.board = new Board(this.output); 
         this.playerID = playerID; 
-        this.receiveName(); 
+        if (playerName.length() == 0) {
+            this.receiveName();
+        }  
+        this.name = playerName;
 
     }
 
@@ -46,6 +49,12 @@ public class Player
     
     public Coordinate placingShipTurn(int numberOfTargets) {
         Coordinate coord = this.input.getShipCoordinate(this.playerID, this.name, numberOfTargets);
+        //Checking for the size of the index, if out of range!, THEREFORE if the indexChecker result is FALSE!!!
+        if (!this.board.CoordChecker(coord)) {
+            this.output.showMessage("The given coordinates are either to big or too small, please retry! ");
+            this.placingShipTurn(numberOfTargets);
+        //Checking if the given coordinates already exist!
+        }
         if (this.board.isShipAlreadyPlacedAtPosition(coord)) {
             this.output.showMessage("The given coordinate is already occupied, please enter another one");
             this.placingShipTurn(numberOfTargets);

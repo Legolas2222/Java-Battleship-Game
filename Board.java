@@ -71,11 +71,12 @@ this.output = output;
 
 
     //writes the given entry to the field 
-    private void writeEntry(Coordinate cord, char entry)
+    private void writeEntry(Coordinate coord, char entry)
     {
+        this.indexChecker(coord);
         try 
         {
-            this.board [cord.x] [cord.y] = entry; 
+            this.board [coord.x] [coord.y] = entry; 
             //System.out.println(entry);
         }catch (Exception e)
         {
@@ -84,12 +85,13 @@ this.output = output;
     }
 
     //returns the value at the given coordinates of the field, throws an error if out of range  
-    private char getEntry(Coordinate cord)
+    private char getEntry(Coordinate coord)
     {
+        this.indexChecker(coord);
         try 
         {
-            char value = this.board [cord.x] [cord.y]; 
-            System.out.println(value); 
+            char value = this.board [coord.x] [coord.y]; 
+            //System.out.println(value); 
             return value; 
         }catch (Exception e)
         {
@@ -136,6 +138,7 @@ this.output = output;
 
 
 // ----------------------------------------------------------PUBLIC ACTION FUNCTIONS FOR PLAYING----------------------------------------------
+
 public boolean AttackField(Coordinate coord) {
     indexChecker(coord);
     if (isFieldAlreadyHit(coord)){
@@ -154,17 +157,19 @@ public boolean AttackField(Coordinate coord) {
         throw(new Error("FieldValue in AttackField function could not be resolved, maybe wrong phase of the game"));
     }
 }
+
 public boolean PlaceShip(Coordinate coord) {
     indexChecker(coord);
     if (isShipAlreadyPlacedAtPosition(coord)) {
         return false;
     }
     this.writeEntry(coord, activeShipMarker);
-    return false;
+    return true;    
 }
 
 
 //------------------------------------------------------VALIDATOR FUNCTIONS--------------------------------------------------------------------
+
 // returns true if there is an active ship at the position, if the field is empty, then false, ONLY FOR PLACING THE SHIPS 
     public boolean isShipAlreadyPlacedAtPosition(Coordinate coord)
     {
@@ -201,18 +206,25 @@ public boolean PlaceShip(Coordinate coord) {
     }
 
     // checks if the given coordinates are in range of the grid, throws error if not in range   
-    public boolean indexChecker(Coordinate coord)
+    public boolean CoordChecker(Coordinate coord)
     {
-        int xIndexRange = this.xSize - 1; 
-        int yIndexRange = this.ySize - 1; 
-        boolean result = coord.x <= xIndexRange && coord.y <= yIndexRange; 
+        int xIndexMaxRange = this.xSize - 1; 
+        int yIndexMaxRange = this.ySize - 1; 
+        boolean result = coord.x <= xIndexMaxRange && coord.y <= yIndexMaxRange; 
         if (this.debug)
         {
-          System.out.print("index checker" + xIndexRange + " " + yIndexRange + " result is " + result); 
+          System.out.print("index checker" + xIndexMaxRange + " " + yIndexMaxRange + " result is " + result); 
         }
-         return result; 
+        return result; 
         }
     
+    private boolean indexChecker(Coordinate coord) {
+        boolean result = this.CoordChecker(coord);
+        // if (!result) {
+        //     throw(new Error("Index Checker out of range, either to big or too small index"));
+        // }
+        return result;
+    }
         
 
 }

@@ -1,7 +1,5 @@
 public class BattleShip 
 {
-    // public Board setBoard; 
-    // public Board testBoard; 
     private Player player1; 
     private Player player2; 
     
@@ -11,14 +9,7 @@ public class BattleShip
     private  int PlayerCount; 
 
     private int targetsHit; 
-    // implement unique ID Class and remember to set last turn Player in Turn Function !!!
-    // * DONE:  print the current board after each action
-    //TODO make sure on ship placement that you can't place your ships all at the same coordiantes 
-    //TODO make sure you can't attack the same coordinates twice
-    //TODO make sure logic is where it belongs, 
-    //TODO make turn base game where you place your fleet first, the attack in turns
 
-    //? maybe multiplayer networking / async in the future 
     private String lastPlayerTurn; 
 
     public static final int numberOfTargets = 3; 
@@ -29,11 +20,11 @@ public class BattleShip
     
 
 
-  private String CreatePlayerID()
+    private String CreatePlayerID()
     {
-    String ID = "Player" + Integer.toString(this.PlayerCount); 
-    this.PlayerCount++ ; 
-    return ID; 
+      String ID = "Player" + Integer.toString(this.PlayerCount); 
+      this.PlayerCount++ ; 
+      return ID; 
   }
 
   public BattleShip(boolean debug, IOutput output, IPlayerInput input)
@@ -41,8 +32,8 @@ public class BattleShip
       this.PlayerCount = 0; 
       this.input = input; 
       this.output = output; 
-      this.player1 = new Player(output, input, "Player1"); 
-      this.player2 = new Player(output, input, CreatePlayerID()); 
+      this.player1 = new Player(output, input, "Player1", ""); 
+      this.player2 = new Player(output, input, CreatePlayerID(), ""); 
   
   }
 

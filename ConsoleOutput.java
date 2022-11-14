@@ -17,20 +17,20 @@ public class ConsoleOutput implements IOutput {
             System.out.print(k + "-"); 
         }
         System.out.print("\n"); 
-        for (int i = 0; i < xSize; i++ )
+        for (int x = 0; x < xSize; x++ )
         {
             // char u = (char)(i + 65); 
-            System.out.print("-" + i + "-"); 
-            for (int j = 0; j < ySize; j++ )
+            System.out.print("-" + x + "-"); 
+            for (int y = 0; y < ySize; y++ )
             {
                    
-                if ((int)grid[i] [j] == 0)
+                if ((int)grid[x] [y] == 0)
                 {
-                System.out.print(grid[i] [j] + "|"); 
+                System.out.print(grid[x] [y] + "|"); 
                 }
                 else 
                 {
-                System.out.print(grid[i] [j] + "|"); 
+                System.out.print(grid[x] [y] + "|"); 
                 }
         
             }
