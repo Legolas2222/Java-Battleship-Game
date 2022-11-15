@@ -17,11 +17,12 @@ public class ConsoleOutput implements IOutput {
             System.out.print(k + "-"); 
         }
         System.out.print("\n"); 
-        for (int x = 0; x < xSize; x++ )
+        for (int y = 0; y < ySize; y++ )
         {
             // char u = (char)(i + 65); 
-            System.out.print("-" + x + "-"); 
-            for (int y = 0; y < ySize; y++ )
+            System.out.print("-" + y + "-"); 
+            //for (int y = 0; y < ySize; y++ )
+            for (int x = 0; x < xSize; x++ )
             {
                    
                 if ((int)grid[x] [y] == 0)

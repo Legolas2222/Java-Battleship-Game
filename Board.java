@@ -59,9 +59,9 @@ this.output = output;
 
     private void fillBoard(char filler)
     {
-        for (int i = 0; i < this.xSize;  ++ i)
+        for (int i = 0; i < this.xSize;  ++i)
         {
-          for (int j = 0; j < this.ySize;  ++ j)
+          for (int j = 0; j < this.ySize;  ++j)
             {
                 this.board [i] [j] = filler; 
 
@@ -73,7 +73,7 @@ this.output = output;
     //writes the given entry to the field 
     private void writeEntry(Coordinate coord, char entry)
     {
-        this.indexChecker(coord);
+        this.indexChecker(coord); 
         try 
         {
             this.board [coord.x] [coord.y] = entry; 
@@ -87,7 +87,7 @@ this.output = output;
     //returns the value at the given coordinates of the field, throws an error if out of range  
     private char getEntry(Coordinate coord)
     {
-        this.indexChecker(coord);
+        this.indexChecker(coord); 
         try 
         {
             char value = this.board [coord.x] [coord.y]; 
@@ -102,9 +102,9 @@ this.output = output;
     private static char [] [] transformSelfToEnemy(char [] [] board)
     {
         char [] [] returnBoard = new char [BattleShip.xSize] [BattleShip.ySize]; 
-        for (int i = 0; i < board.length; i ++ )
+        for (int i = 0; i < board.length; i++ )
         {
-            for (int j = 0; j < board[0].length; j ++ )
+            for (int j = 0; j < board[0].length; j++ )
             {
                 char local = board[i] [j]; 
                 switch (local)
@@ -139,32 +139,39 @@ this.output = output;
 
 // ----------------------------------------------------------PUBLIC ACTION FUNCTIONS FOR PLAYING----------------------------------------------
 
-public boolean AttackField(Coordinate coord) {
-    indexChecker(coord);
-    if (isFieldAlreadyHit(coord)){
-        return false;
+public boolean AttackField(Coordinate coord)
+    {
+    indexChecker(coord); 
+    if (isFieldAlreadyHit(coord))
+        {
+        return false; 
     }
-    char fieldValue = this.getEntry(coord);
-    if (fieldValue == activeShipMarker) {
-        this.writeEntry(coord, Board.deadShipMarker);
-        return true;
+    char fieldValue = this.getEntry(coord); 
+    if (fieldValue == activeShipMarker)
+        {
+        this.writeEntry(coord, Board.deadShipMarker); 
+        return true; 
     }
-    if (fieldValue == emptyFieldMarker) {
-        this.writeEntry(coord, Board.missedDefenderMarker);
-        return true;
+    if (fieldValue == emptyFieldMarker)
+        {
+        this.writeEntry(coord, Board.missedDefenderMarker); 
+        return true; 
     }
-    else {
-        throw(new Error("FieldValue in AttackField function could not be resolved, maybe wrong phase of the game"));
+    else 
+        {
+        throw(new Error("FieldValue in AttackField function could not be resolved, maybe wrong phase of the game")); 
     }
 }
 
-public boolean PlaceShip(Coordinate coord) {
-    indexChecker(coord);
-    if (isShipAlreadyPlacedAtPosition(coord)) {
-        return false;
+public boolean PlaceShip(Coordinate coord)
+    {
+    indexChecker(coord); 
+    if (isShipAlreadyPlacedAtPosition(coord))
+        {
+        return false; 
     }
-    this.writeEntry(coord, activeShipMarker);
-    return true;    
+    this.writeEntry(coord, activeShipMarker); 
+    return true; 
 }
 
 
@@ -218,13 +225,24 @@ public boolean PlaceShip(Coordinate coord) {
         return result; 
         }
     
-    private boolean indexChecker(Coordinate coord) {
-        boolean result = this.CoordChecker(coord);
-        // if (!result) {
-        //     throw(new Error("Index Checker out of range, either to big or too small index"));
-        // }
-        return result;
-    }
+    private boolean indexChecker(Coordinate coord)
+    {
+        int xIndexMaxRange = this.xSize - 1; 
+        int yIndexMaxRange = this.ySize - 1; 
+        boolean result = coord.x <= xIndexMaxRange && coord.y <= yIndexMaxRange; 
+        if (this.debug)
+        {
+          System.out.print("index checker" + xIndexMaxRange + " " + yIndexMaxRange + " result is " + result); 
+        }
+        if ( ! result)
+        {
+            throw(new Error("Index Checker out of range, either to big or too small index")); 
+        }
+        return result; 
+        }
+
+        
+}
         
 
-}
+

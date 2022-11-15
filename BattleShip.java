@@ -14,8 +14,8 @@ public class BattleShip
 
     public static final int numberOfTargets = 3; 
     public static final boolean debug = false; 
-    public static final int xSize = 4; 
-    public static final int ySize = 4; 
+    public static final int xSize = 8; 
+    public static final int ySize = 3; 
   
     
 

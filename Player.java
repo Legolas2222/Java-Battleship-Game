@@ -60,6 +60,7 @@ public class Player
             this.placingShipTurn(numberOfTargets);
         }
         this.board.PlaceShip(coord);
+        
         return coord; 
     }
     

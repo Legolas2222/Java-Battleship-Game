@@ -6,4 +6,8 @@ public class Coordinate {
         this.x = x;
         this.y = y;
     }
+
+    public void PrintCoordinate() {
+        System.out.println("X: " + this.x+ " Y: "+ this.y);
+    }
 }
