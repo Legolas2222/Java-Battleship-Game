@@ -217,19 +217,21 @@ public boolean PlaceShip(Coordinate coord)
     {
         int xIndexMaxRange = this.xSize - 1; 
         int yIndexMaxRange = this.ySize - 1; 
-        boolean result = coord.x <= xIndexMaxRange && coord.y <= yIndexMaxRange; 
+        boolean greaterZero = coord.x >= 0 &&  coord.y >= 0; 
+        boolean result = coord.x <= xIndexMaxRange && coord.y <= yIndexMaxRange && greaterZero; 
         if (this.debug)
         {
-          System.out.print("index checker" + xIndexMaxRange + " " + yIndexMaxRange + " result is " + result); 
+            System.out.print("index checker" + xIndexMaxRange + " " + yIndexMaxRange + " result is " + result); 
         }
         return result; 
-        }
+    }
     
     private boolean indexChecker(Coordinate coord)
     {
         int xIndexMaxRange = this.xSize - 1; 
         int yIndexMaxRange = this.ySize - 1; 
-        boolean result = coord.x <= xIndexMaxRange && coord.y <= yIndexMaxRange; 
+        boolean greaterZero = coord.x >= 0 &&  coord.y >= 0; 
+        boolean result = coord.x <= xIndexMaxRange && coord.y <= yIndexMaxRange && greaterZero; 
         if (this.debug)
         {
           System.out.print("index checker" + xIndexMaxRange + " " + yIndexMaxRange + " result is " + result); 

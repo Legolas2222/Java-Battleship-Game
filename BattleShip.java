@@ -32,8 +32,8 @@ public class BattleShip
       this.PlayerCount = 0; 
       this.input = input; 
       this.output = output; 
-      this.player1 = new Player(output, input, "Player1", ""); 
-      this.player2 = new Player(output, input, CreatePlayerID(), ""); 
+      this.player1 = new Player(output, input, "Player1", "P"); 
+      this.player2 = new Player(output, input, CreatePlayerID(), "e"); 
   
   }
 
@@ -63,6 +63,7 @@ public class BattleShip
 
   public void Play()
     {
+      this.output.showMessage("This is the Battleship Game, two players attack their enemies' fleet");
       PlacingShips(this.player1); 
       PlacingShips(this.player2); 
 
